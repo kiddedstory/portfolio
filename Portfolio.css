@@ -1,0 +1,567 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+:root{
+    /* 基本設定 */
+    font-family: Noto Sans TC;
+
+    /* 設定顏色 */
+    --white-color: #e9e9fa;
+    --black-color: #202020;
+
+}
+
+/* ------together start------ */
+
+body {
+    background-color: var(--white-color);
+}
+
+.forhide {
+    width: 100%;
+    height: 100vh;
+}
+
+#menu_control {
+    position: absolute;
+    z-index: 100;
+    opacity: 1;
+    left: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header .logo {
+    display: flex;
+    overflow: hidden;
+}
+
+.logo img {
+    margin: auto;
+}
+
+.page {
+    color: var(--black-color);
+    opacity: .8;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    transition: all .2s ease-in-out;
+}
+
+.page:after{
+    background-color: var(--black-color);
+    opacity: .8;
+    position: absolute;
+    content: '';
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: all .2s ease-in-out;
+}
+
+.page:hover::after{
+    width: 100%;
+}
+
+.page:active {
+    color: var(--white-color);
+    text-shadow:
+    0px 0px 3px rgba(0, 0, 0, 1);
+}
+
+.page:active::after{
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+}
+
+.cover {
+    object-fit: cover;
+}
+
+/* PC */
+/* 176*2+32*2+min400*2=1216 */
+/* @media screen and (min-width: 1216px) { */
+    
+    .header {
+        padding: 0px 32px;
+        height: 64px;
+    }
+    
+    .header .logo {
+        height: 64px;
+        width: 64px;
+    }
+
+    .menu_btn {
+        display: none;
+    }
+
+    .nav_pc {
+        /* text-align: right; */
+        display: flex;
+    }
+    
+    .nav_pc a {
+        margin: auto;
+    }
+
+    .page {
+        font-size: 18px;
+        letter-spacing: 0.06em;
+        line-height: 1.5em;
+        margin: 12px;
+        padding: 2px;
+    }
+    
+    .nav_mo {
+        display: none;
+    }
+
+    #gotop {
+        position: fixed;
+        z-index: 1;
+        right: 60px;
+        bottom: 60px;
+        background-color: var(--white-color);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        box-shadow: 
+        -6px -6px 16px rgba(255, 255, 255, 0.8),
+        6px  6px 16px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        display: none;
+    }
+    
+    #gotop:hover {
+        box-shadow: 
+        -2px -2px 6px rgba(255, 255, 255, 0.8),
+        2px 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    #gotop:active {
+        box-shadow: 
+        1px 1px 2px rgba(255, 255, 255, 0.8),
+        -1px -1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    #gotop .foralign {
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        text-align: center;
+    }
+    
+    #gotop .foralign i {
+        font-size: 64px;
+        color: rgba(32, 32, 32, 0.5);
+        width: fit-content;
+    }
+
+/* } */
+
+
+/* table */
+/* 176*2+32*2+min400*2=1216 */
+/* @media screen and (max-width: 1215px) {
+} */
+
+
+/* Mobile */
+/* 176*2+min400=752 */
+@media screen and (max-width: 752px) {
+
+    .header {
+        padding: 0 16px;
+        height: 44px;
+    }
+
+    .header .logo {
+        height: 44px;
+        width: 44px;
+    }
+    
+    .menu_btn {
+        position: absolute;
+        display: block;
+        width: 44px;
+        height: 44px;
+        right: 16px;
+        top: 2px;
+    }
+    
+    .menu_btn span {
+        opacity: 0;
+        display: none;
+    }
+    
+    .menu_line {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 28px;
+        background-color: #222;
+        top: 21px;
+        left: 8px;
+    }
+
+    #line1 {
+        transform: translate(0px, -10px);
+        animation: .5s ease-in-out forwards line1b;
+    }
+
+    #line2 {
+        transform: translate(0px, 0px);
+        animation: .5s ease-in-out forwards line2b;
+    }
+    
+    #line3 {
+        transform: translate(0px, 10px);
+        animation: .5s ease-in-out forwards line3b;
+    }
+
+    #line4 {
+        display: none;
+    }
+
+    #line5 {
+        display: none;
+    }
+
+    #line6 {
+        display: none;
+    }
+    
+    .nav_pc {
+        display: none;
+    }
+    
+    .nav_mo {
+        display: block;
+        position: fixed;
+        background-color: var(--white-color);
+        z-index: -1;
+        opacity: 0;
+        top: 44px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 44px);
+        transition: .2s ease-in-out;
+        text-align: center;
+        padding: 24px 0px 0px;
+    }
+    
+    .nav_mo a {
+        display: block;
+    }
+    
+    .page {
+        margin: 16px 0px;
+        font-size: 24px;
+    }
+
+    #menu_control:checked ~ .forhide {
+        overflow-y: hidden;
+    }
+    
+    #menu_control:checked ~ .forhide .header .logo {
+        position: fixed;
+        z-index: 11;
+    }
+    
+    #menu_control:checked ~ .forhide .header .menu_btn {
+        position: fixed;
+        z-index: 12;
+        right: 16px;
+        top: 2px;
+    }
+    
+    #menu_control:checked ~ .forhide .nav_mo {
+        z-index: 10;
+        opacity: 1;
+    }
+
+    @keyframes line1a {
+        0%{ transform: translate(0px, -10px) rotate(0deg); }
+        30%{ transform: translate(0px, 0px) rotate(0deg); }
+        100%{ transform: translate(0px, 0px) rotate(-45deg); }
+    }
+
+    @keyframes line2a {
+        0%{ opacity: 1; }
+        30%{ opacity: 1; }
+        31%{ opacity: 0; }
+        100%{ opacity: 0; }
+    }
+
+    @keyframes line3a {
+        0%{ transform: translate(0px, 10px) rotate(0deg); }
+        30%{ transform: translate(0px, 0px) rotate(0deg); }
+        100%{ transform: translate(0px, 0px) rotate(45deg); }
+    }
+
+    #menu_control:checked ~ .forhide .header .menu_btn #line1 {
+        animation: .5s ease-in-out forwards line1a;
+    }
+    
+    #menu_control:checked ~ .forhide .header .menu_btn #line2 {
+        animation: .5s ease-in-out forwards line2a;
+    }
+    
+    #menu_control:checked ~ .forhide .header .menu_btn #line3 {
+        animation: .5s ease-in-out forwards line3a;
+    }
+    
+    @keyframes line1b {
+        0%{ transform: translate(0px, 0px) rotate(-45deg); }
+        70%{ transform: translate(0px, 0px) rotate(0deg); }
+        100%{ transform: translate(0px, -10px) rotate(0deg); }
+    }
+    
+    @keyframes line2b {
+        0%{ opacity: 0; }
+        69%{ opacity: 0; }
+        70%{ opacity: 1; }
+        100%{ opacity: 1; }
+    }
+    
+    @keyframes line3b {
+        0%{ transform: translate(0px, 0px) rotate(45deg); }
+        70%{ transform: translate(0px, 0px) rotate(0deg); }
+        100%{ transform: translate(0px, 10px) rotate(0deg); }
+    }
+
+    #menu_control2:checked ~ .forhide .header .menu_btn #line1 {
+        animation: .5s ease-in-out forwards line1b;
+    }
+
+    #menu_control2:checked ~ .forhide .header .menu_btn #line2 {
+        animation: .5s ease-in-out forwards line2b;
+    }
+    
+    #menu_control2:checked ~ .forhide .header .menu_btn #line3 {
+        animation: .5s ease-in-out forwards line3b;
+    }
+    
+    
+    
+    
+}
+
+
+/* ------together done------ */
+
+/* ------portfolio start------ */
+
+.main {
+    margin: 0px 144px;
+    padding: 0px 0px 160px;
+}
+
+.main .title {
+    padding: 160px 20%;
+}
+
+.main .title h1 {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 1.2em;
+    letter-spacing: 0.06em;
+    color: var(--black-color);
+}
+
+.main .title h2 {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.2em;
+    letter-spacing: 0.06em;
+    color: var(--black-color);
+
+    padding: 36px 0px;
+}
+
+.main .description {
+    padding: 80px 0px 240px;
+}
+
+.main .description .block {
+    width:fit-content;
+    margin:0px auto;
+    padding: 50px;
+    border: 2px solid;
+}
+
+.main .description .block p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5em;
+    letter-spacing: 0.06em;
+    color: var(--black-color);
+}
+
+.main .work_area {
+    background-color: var(--white-color);
+}
+
+.main .work_area .line {
+    background-color: var(--white-color);
+    height:fit-content;
+    display: flex;
+}
+
+.work {
+    position: relative;
+    background-color: rgb(191, 225, 253);
+    width: auto;
+    height: fit-content;
+    margin: 32px;
+    border-radius: 24px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.3);
+    
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    
+    transition: all 0.2s ease-in-out;
+}
+
+.work img {
+    width: 1200px;
+    height: 480px;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    background-color:rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: all 0.2s ease-in;
+
+    display:  flex;
+    align-items: center;
+    justify-content:  center;
+}
+
+.work:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.5);
+}
+
+.mask:hover {
+    opacity: 1;
+}
+
+.words {
+    text-align: center;
+}
+
+.words h6 {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.5em;
+    letter-spacing: 0.06em;
+    color: var(--white-color);
+}
+
+.words p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.5em;
+    letter-spacing: 0.2em;
+    color: var(--white-color);
+}
+
+
+
+
+
+/* table */
+/* 176*2+32*2+min400*2=1216 */
+@media screen and (max-width: 1215px) {
+
+    .main .work_area .line {
+        flex-wrap: wrap;
+    }
+
+}
+
+/* ------portfolio done------ */
+
+/* ------about me start------ */
+
+.about {
+    margin: 120px 20% 0px;
+    padding: 0px 0px 140px;
+    display: flex;
+}
+
+.about .description {
+    margin: 0px 64px 0px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.about .description .title {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.4em;
+    letter-spacing: 0.06em;
+    color: var(--black-color);
+}
+
+.about .description .block {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5em;
+    letter-spacing: 0.02em;
+    color: var(--black-color);
+
+    margin: 64px 0px 0px;
+}
+
+.about .photo img {
+    width: 400px;
+    height: 600px;
+}
+
+.about .description a {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1em;
+    letter-spacing: 0.02em;
+    color: var(--black-color);
+
+    width: fit-content;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: royalblue;
+    transition: 0.2s;
+}
+
+.about .description a:hover {
+    background-color: salmon;
+}
+
+
+
+
+
+
+
+
+/* ------about me done------ */
+
+
+
